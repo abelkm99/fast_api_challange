@@ -1,5 +1,8 @@
 
 
+ON THE TASK IT IS ASKING TO SAVE DATA ON THE MEMORY.
+ - I WOULD ASSUME IT MEANS ON THE DATABASE.
+
 # TASKS.
   - [x] Develop a web application following the MVC design pattern.
     - [x] Implement separate levels for Routing, Business Logic, and DB calls.
