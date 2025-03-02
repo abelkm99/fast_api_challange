@@ -1,10 +1,11 @@
 import datetime
 from typing import Any
 
+import bcrypt
 import jwt
 
 from app.config import MySettings
-from app.core.domain.commons.exceptions import BaseExceptionError
+from app.core.domain.user.exceptions import AccessTokenExpiredError, InvalidTokenError
 
 
 def generate_new_token(data: dict[str, Any], expires_delta: datetime.timedelta | None = None) -> str:
@@ -20,5 +21,22 @@ def generate_new_token(data: dict[str, Any], expires_delta: datetime.timedelta |
 def decode_token(token: str) -> dict[str, Any]:
     try:
         return jwt.decode(token, MySettings.SECRET_KEY, algorithms=[MySettings.ALGORITHM])  # type: ignore
-    except jwt.PyJWTError as e:  # type: ignore
-        raise BaseExceptionError(message="ERROR DECODING TOKEN", status_code=401) from e
+    except InvalidTokenError as e:
+        raise InvalidTokenError() from e
+    except jwt.ExpiredSignatureError as e:
+        raise AccessTokenExpiredError() from e
+    except jwt.PyJWTError as e:
+        raise Exception() from e
+
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    password_byte_enc = plain_password.encode("utf-8")
+    hash_password = hashed_password.encode("utf-8")
+    return bcrypt.checkpw(password=password_byte_enc, hashed_password=hash_password)
+
+
+def hash_password(*, password: str):
+    pwd_bytes = password.encode("utf-8")
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password=pwd_bytes, salt=salt)
+    return hashed_password.decode("utf-8")

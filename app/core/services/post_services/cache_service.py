@@ -1,8 +1,8 @@
-def user_posts_cache_key(f, *args, **kwargs):
-    return "abel"
-    """Generates a cache key based on user ID only."""
-    user = kwargs.get("user")
-    if user:
-        return f"user_posts:{user.id}"
-    # Fallback key (shouldn't occur under normal circumstances)
-    return f"{f.__module__}:{f.__name__}:{args}:{kwargs}"
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    import uuid
+
+
+def user_posts_key(user_id: "uuid.UUID") -> str:
+    return f"user_posts:user:{user_id}"

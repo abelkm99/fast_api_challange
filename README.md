@@ -3,6 +3,7 @@
 A robust web application built with Python, FastAPI, and MySQL that demonstrates the use of the MVC design pattern, Domain-Driven Design (DDD), Dependency Injection, and advanced ORM integration with SQLAlchemy.
 
 ## Table of Contents
+- [Deployment](#Deployment)
 - [Overview](#overview)
 - [Architecture](#architecture)
 - [Features and Endpoints](#features-and-endpoints)
@@ -14,11 +15,16 @@ A robust web application built with Python, FastAPI, and MySQL that demonstrates
 - [Additional Notes](#additional-notes)
 - [Commands Cheat Sheet](#commands-cheat-sheet)
 
+
+# Deployment
+  The application is deployed on Render:
+  - [Render URL](https://fast-api-challange.onrender.com/)
+  - [Swagger Documentation](https://fast-api-challange.onrender.com/docs)
 ## Overview
-This project provides a complete solution for a web application that includes user authentication, post management, and caching. The application leverages asynchronous operations (using `asyncmy` with MySQL), comprehensive type validation with both SQLAlchemy and Pydantic, and follows clean architectural principles.
+This project provides a complete solution for a web application that includes user authentication, post management, and caching. The application leverages asynchronous operations (using `aiomysql` with MySQL), comprehensive type validation with both SQLAlchemy and Pydantic, and follows clean architectural principles.
 
 ## Architecture
-- **MVC Design Pattern:**  
+- **MVC Design Pattern:**
   - **Routing:** Handles API endpoints.
   - **Business Logic:** Encapsulated in service layers and domain models (located in `app.core.domain`).
   - **Database Access:** Managed via SQLAlchemy ORM.
@@ -65,20 +71,16 @@ For every data entity, the project includes:
 ## Environment Configuration
 Create a `.env` file in your project root with the following settings:
 ```bash
-DEVELOPMENT_DATABASE_URL="mysql+asyncmy://root:123456789@db/backend?charset=utf8mb4"
+DEVELOPMENT_DATABASE_URL="mysql+aiomysql://root:123456789@db/backend?charset=utf8mb4"
 ENVIRONMENT="development"
 ```
 
 ## Development and Deployment
-- **Local Development:**  
+- **Local Development:**
   Use Docker Compose to start the application:
   ```bash
   docker compose up app -d
   ```
-- **Deployment:**  
-  The application is deployed on Render:
-  - [Render URL](https://fast-api-challange.onrender.com/)
-  - [Swagger Documentation](https://fast-api-challange.onrender.com/docs)
 
 
 ### Creating a Virtual Environment
@@ -146,7 +148,7 @@ docker compose run --rm test pytest
 ```
 *Note: End-to-end and integration tests, including ORM mapping tests, are pending.*
 
-## Additional Notes That Are Remianing
+## Additional Notes That Are Remaining
 - **Pre-commit Hooks:** Configured with ruff, pyright, and mypy to ensure code quality.
 - **Unit of Work:** Utilized in services, though the current business logic is relatively straightforward and we don't need it at the moment.
 - **Caching Enhancements:** Future work includes improving caching strategies.

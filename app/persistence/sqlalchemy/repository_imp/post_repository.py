@@ -21,9 +21,6 @@ class PostRepositoryImp(PostRepositoryInterface[AsyncSession]):
         limit: int = 10,
         offset: int = 0,
     ) -> list[PostEntity]:
-        import asyncio
-
-        await asyncio.sleep(3)  # added intentionally to test the caching
         stmt = (
             select(PostEntity)
             .where(PostTable.c.user_id == user_id)
@@ -40,12 +37,12 @@ class PostRepositoryImp(PostRepositoryInterface[AsyncSession]):
         user_id: uuid.UUID,
         text: str,
         commit: bool = True,
-    ) -> uuid.UUID:
+    ) -> PostEntity:
         new_post = PostEntity(user_id=user_id, text=text)
         self.session.add(new_post)
         if commit:
             await self.commit()
-        return new_post.id
+        return new_post
 
     async def delete_post(self, *, user_id: uuid.UUID, post_id: uuid.UUID, commit: bool = True) -> None:
         stmt = delete(PostEntity).where((PostTable.c.id == post_id) & (PostTable.c.user_id == user_id))

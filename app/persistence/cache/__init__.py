@@ -13,4 +13,4 @@ def set_default_cache():
 
 
 def get_in_memory_cache():
-    return caches.get("default")  # This fails if config is missing
+    return caches.get("default")

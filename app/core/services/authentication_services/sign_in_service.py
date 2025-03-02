@@ -9,7 +9,7 @@ from app.core.domain.user.exceptions import (
 )
 from app.core.domain.user.protocols import UserRepositoryInterface
 from app.core.services.authentication_services.schemas import AuthenticatedUser
-from app.core.services.authentication_services.utils import decode_token, generate_new_token
+from app.core.services.authentication_services.utils import decode_token, generate_new_token, verify_password
 
 
 async def sign_in_service(
@@ -23,7 +23,7 @@ async def sign_in_service(
     if not db_user:
         raise UserNotFoundError()
 
-    if db_user.password != password:
+    if not verify_password(plain_password=password, hashed_password=db_user.password):
         raise IncorrectPasswordError()
 
     access_token = generate_new_token(

@@ -24,7 +24,7 @@ class PostRepositoryInterface(AbstractRepository[SessionType]):
         user_id: uuid.UUID,
         text: str,
         commit: bool = True,
-    ) -> uuid.UUID:
+    ) -> PostEntity:
         """Finds a user by their unique identifier (UUID).
 
         Args:
