@@ -1,7 +1,7 @@
 import uuid
 
 from sqlalchemy import Boolean, Column, DateTime, String, Table, false, func
-from sqlalchemy.orm import registry
+from sqlalchemy.orm import registry, relationship
 
 from app.core.domain.user.entities import (
     UserEntity,
@@ -34,5 +34,11 @@ def map_user_tables(mapper_registry: registry):
             "updated_at": UserTable.c.updated_at,
             "is_archived": UserTable.c.is_archived,
             "is_activated": UserTable.c.is_activated,
+            "posts": relationship(
+                "PostEntity",
+                back_populates="user",
+                cascade="all, delete",
+                passive_deletes=True,
+            ),
         },
     )

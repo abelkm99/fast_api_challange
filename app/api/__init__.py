@@ -23,7 +23,7 @@ async def lifespan(_: FastAPI):
 
 def create_app():
     app = FastAPI(
-        title=f"AI-Underwriter - {MySettings.ENVIRONMENT.name}",
+        title=f"Fastapi Challenge-{MySettings.ENVIRONMENT.name}",
         lifespan=lifespan,
     )
     register_router(app)

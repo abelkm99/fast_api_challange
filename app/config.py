@@ -50,7 +50,6 @@ class Settings(BaseModel):
 
 
 class CryptSettings(BaseModel):
-    JWT_SECRET: str = os.environ.get("JWT_SECRET", default="jwt_secret")
     SECRET_KEY: str = os.environ.get("SECRET_KEY", default="secret")
     ALGORITHM: str = os.environ.get("ALGORITHM", default="HS256")
 
@@ -105,6 +104,10 @@ class LogFireConfig(BaseModel):
     LOG_FIRE_API_KEY: str = os.environ.get("LOG_FIRE_API_KEY", "")
 
 
+class CacheConfigs(BaseModel):
+    CACHE_EXPIRE_MINUTES: int = int(os.environ.get("CACHE_EXPIRE_MINUTES", 5))
+
+
 class BaseConfig(
     EnvironmentSettings,
     LoggerLevel,
@@ -115,8 +118,9 @@ class BaseConfig(
     DatabaseSettings,
     OtelConfig,
     LogFireConfig,
+    CacheConfigs,
 ):
-    SFRANALYTICS_API_KEY: str = os.environ.get("SFRANALYTICS_API_KEY", "")
+    TEXT_SIZE_LIMIT_MB: int = int(os.environ.get("TEXT_SIZE_LIMIT", 1))
 
     def get_env(self, environment_option: EnvironmentOption | None = None):
         if environment_option:

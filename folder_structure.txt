@@ -1,0 +1,92 @@
+.
+├── Dockerfile.dev
+├── Dockerfile.prod
+├── Dockerfile.test
+├── README.md
+├── activate_project.sh
+├── app
+│   ├── __init__.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── exception_handlers.py
+│   │   ├── global_dependencies.py
+│   │   ├── home_router.py
+│   │   ├── middlewares.py
+│   │   └── v1
+│   │       ├── __init__.py
+│   │       ├── auth.py
+│   │       ├── dependencies.py
+│   │       ├── guards.py
+│   │       └── posts.py
+│   ├── config.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── domain
+│   │   │   ├── __init__.py
+│   │   │   ├── commons
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── entities
+│   │   │   │   │   ├── base_entity.py
+│   │   │   │   │   └── status_entity.py
+│   │   │   │   ├── exceptions.py
+│   │   │   │   ├── protocols.py
+│   │   │   │   ├── schemas.py
+│   │   │   │   └── session.py
+│   │   │   ├── post
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── entities.py
+│   │   │   │   ├── exceptions.py
+│   │   │   │   └── protocols.py
+│   │   │   └── user
+│   │   │       ├── __init__.py
+│   │   │       ├── entities.py
+│   │   │       ├── exceptions.py
+│   │   │       └── protocols.py
+│   │   └── services
+│   │       ├── __init__.py
+│   │       ├── authentication_services
+│   │       │   ├── __init__.py
+│   │       │   ├── schemas.py
+│   │       │   ├── sign_in_service.py
+│   │       │   ├── sign_up_service.py
+│   │       │   └── utils.py
+│   │       ├── commons
+│   │       │   ├── __init__.py
+│   │       │   ├── schemas.py
+│   │       │   └── unit_of_work.py
+│   │       └── post_services
+│   │           ├── __init__.py
+│   │           ├── add_post_service.py
+│   │           ├── delete_post_service.py
+│   │           ├── get_posts_service.py
+│   │           └── schemas.py
+│   ├── logger.py
+│   ├── main.py
+│   └── persistence
+│       ├── __init__.py
+│       └── sqlalchemy
+│           ├── alembic.ini
+│           ├── connection.py
+│           ├── constants.py
+│           ├── dependencies.py
+│           ├── migrations
+│           │   ├── README
+│           │   ├── script.py.mako
+│           │   └── versions
+│           │       ├── a437ebad5f2a_add_user_table.py
+│           │       └── dc4629d2dbc1_added_post_table.py
+│           ├── models
+│           │   ├── __init__.py
+│           │   ├── post_model.py
+│           │   ├── serializers.py
+│           │   └── user_model.py
+│           └── repository_imp
+│               ├── __init__.py
+│               ├── post_repository.py
+│               └── user_repository.py
+├── docker-compose.yml
+├── folder_structure.txt
+├── pyproject.toml
+└── uv.lock
+
+20 directories, 70 files
