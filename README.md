@@ -70,6 +70,12 @@ ON THE TASK IT IS ASKING TO SAVE DATA ON THE MEMORY.
   - [x] Optimize all functions and dependencies to avoid redundant DB calls or logic.
   - [x] Provide comprehensive documentation and comments on each function, explaining their purpose and functionality.
 
+### To run the project locally add the following two commands into .env files
+```bash
+DEVELOPMENT_DATABASE_URL="mysql+asyncmy://root:123456789@localhost:5444/backend?charset=utf8mb4"
+ENVIRONMENT="development"
+```
+
 # create a virtual environment
 
 ```bash
