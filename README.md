@@ -146,9 +146,9 @@ docker compose run --rm test pytest
 ```
 *Note: End-to-end and integration tests, including ORM mapping tests, are pending.*
 
-## Additional Notes
+## Additional Notes That Are Remianing
 - **Pre-commit Hooks:** Configured with ruff, pyright, and mypy to ensure code quality.
-- **Unit of Work:** Utilized in services, though the current business logic is relatively straightforward.
+- **Unit of Work:** Utilized in services, though the current business logic is relatively straightforward and we don't need it at the moment.
 - **Caching Enhancements:** Future work includes improving caching strategies.
 - **Further Testing:** End-to-end and integration tests remain as future enhancements.
 
