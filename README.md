@@ -68,7 +68,7 @@ ON THE TASK IT IS ASKING TO SAVE DATA ON THE MEMORY.
   - [x] Use in-memory caching for "GetPosts" to cache data for up to 5 minutes.
   - [x] Ensure extensive type validation in both SQLAlchemy and Pydantic models for every endpoint.
   - [x] Optimize all functions and dependencies to avoid redundant DB calls or logic.
-  - [ ] Provide comprehensive documentation and comments on each function, explaining their purpose and functionality.
+  - [x] Provide comprehensive documentation and comments on each function, explaining their purpose and functionality.
 
 # create a virtual environment
 
