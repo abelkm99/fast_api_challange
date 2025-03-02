@@ -6,7 +6,7 @@ def set_default_cache():
         {
             "default": {
                 "cache": "aiocache.SimpleMemoryCache",
-                "serializer": {"class": "aiocache.serializers.StringSerializer"},
+                "serializer": {"class": "aiocache.serializers.PickleSerializer"},
             },
         }
     )

@@ -65,7 +65,7 @@ For every data entity, the project includes:
 ## Environment Configuration
 Create a `.env` file in your project root with the following settings:
 ```bash
-DEVELOPMENT_DATABASE_URL="mysql+asyncmy://root:123456789@localhost:5444/backend?charset=utf8mb4"
+DEVELOPMENT_DATABASE_URL="mysql+asyncmy://root:123456789@db/backend?charset=utf8mb4"
 ENVIRONMENT="development"
 ```
 

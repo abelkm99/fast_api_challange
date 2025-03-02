@@ -25,7 +25,7 @@ def cache_response(ttl: int = 60, namespace: str = "main"):
             cached_value = await cache.get(cache_key)  # pyright: ignore
 
             if cached_value:
-                return json.loads(cached_value)  # Return cached data
+                return cached_value  # Return cached data
 
             # Call the actual function if cache is not hit
             response = await func(*args, **kwargs)
