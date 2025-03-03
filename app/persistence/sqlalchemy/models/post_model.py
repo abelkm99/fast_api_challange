@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import Column, DateTime, ForeignKey, Table, Text, func
 from sqlalchemy.orm import registry, relationship
 
-from app.core.domain.post.entities import PostEntity  # adjust the import path as needed
+from app.core.domain.post.entities import PostEntity
 from app.persistence.sqlalchemy.constants import MapperRegistry
 from app.persistence.sqlalchemy.models.serializers import GUID
 

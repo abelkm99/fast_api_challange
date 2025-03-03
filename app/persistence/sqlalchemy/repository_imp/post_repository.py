@@ -18,16 +18,8 @@ class PostRepositoryImp(PostRepositoryInterface[AsyncSession]):
     async def get_all_posts(
         self,
         user_id: uuid.UUID,
-        limit: int = 10,
-        offset: int = 0,
     ) -> list[PostEntity]:
-        stmt = (
-            select(PostEntity)
-            .where(PostTable.c.user_id == user_id)
-            .order_by(PostTable.c.created_at.desc())
-            .limit(limit)
-            .offset(offset)
-        )
+        stmt = select(PostEntity).where(PostTable.c.user_id == user_id).order_by(PostTable.c.created_at.desc())
         result = await self.session.execute(stmt)
         return list(result.scalars().all())
 

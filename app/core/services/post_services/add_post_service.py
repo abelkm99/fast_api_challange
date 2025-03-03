@@ -1,4 +1,3 @@
-import asyncio
 import sys
 from typing import TYPE_CHECKING
 
@@ -33,20 +32,8 @@ async def add_post_service(
             user_id=user_id,
             text=text,
         )
-
-        async def add_post_cache():
-            cache_key = user_posts_key(user_id)
-            try:
-                vals = await cache.get(cache_key)  # pyright: ignore
-                if vals:
-                    vals.append(new_post)
-                else:
-                    vals = [new_post]
-                await cache.set(cache_key, vals, ttl=MySettings.CACHE_EXPIRE_MINUTES * 60)  # pyright: ignore
-            except Exception:  # noqa: BLE001
-                CustomLogger.get_logger().error("Error adding cache", exc_info=True)
-
-        asyncio.create_task(add_post_cache())  # noqa: RUF006
+        cache_key = user_posts_key(user_id)
+        await cache.delete(cache_key)  # pyright: ignore
 
         return PostSchema(id=new_post.id)
 

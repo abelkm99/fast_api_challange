@@ -11,8 +11,6 @@ class PostRepositoryInterface(AbstractRepository[SessionType]):
     async def get_all_posts(
         self,
         user_id: uuid.UUID,
-        limit: int = 10,
-        offset: int = 0,
     ) -> list[PostEntity]:
         """Get all posts"""
         ...

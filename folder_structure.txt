@@ -15,6 +15,7 @@
 │   │   └── v1
 │   │       ├── __init__.py
 │   │       ├── auth.py
+│   │       ├── decorators.py
 │   │       ├── dependencies.py
 │   │       ├── guards.py
 │   │       └── posts.py
@@ -26,8 +27,7 @@
 │   │   │   ├── commons
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── entities
-│   │   │   │   │   ├── base_entity.py
-│   │   │   │   │   └── status_entity.py
+│   │   │   │   │   └── base_entity.py
 │   │   │   │   ├── exceptions.py
 │   │   │   │   ├── protocols.py
 │   │   │   │   ├── schemas.py
@@ -57,6 +57,7 @@
 │   │       └── post_services
 │   │           ├── __init__.py
 │   │           ├── add_post_service.py
+│   │           ├── cache_service.py
 │   │           ├── delete_post_service.py
 │   │           ├── get_posts_service.py
 │   │           └── schemas.py
@@ -64,6 +65,8 @@
 │   ├── main.py
 │   └── persistence
 │       ├── __init__.py
+│       ├── cache
+│       │   └── __init__.py
 │       └── sqlalchemy
 │           ├── alembic.ini
 │           ├── connection.py
@@ -89,4 +92,4 @@
 ├── pyproject.toml
 └── uv.lock
 
-20 directories, 70 files
+21 directories, 72 files

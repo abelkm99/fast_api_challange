@@ -62,4 +62,4 @@ async def delete_my_post(
         cache=cache,
     )
 
-    return {"status": "success"}
+    return {"status": "post deleted successfully"}
